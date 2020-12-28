@@ -1,7 +1,11 @@
 module.exports = {
   purge: ['./src/**/*.ejs', './src/**/*.md'],
   theme: {
-    extend: {},
+    extend: {
+        colors: {
+            'ght-brand': '#008000',
+          }
+    },
   },
   variants: {},
   plugins: [],

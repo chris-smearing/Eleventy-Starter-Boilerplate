@@ -4,7 +4,7 @@ description: Everything you need to use this Eleventy Boilerplate template
 date: 2020-05-05T00:00:00Z
 ---
 
-[![Eleventy starter boilerplate banner](/assets/images/posts/eleventy-js-starter-boilerplate.png)](https://creativedesignsguru.com/demo/Eleventy-Starter-Boilerplate/)
+[![Eleventy starter boilerplate banner](/assets/images/posts/green-heart-technology-logo.png)](https://creativedesignsguru.com/demo/Eleventy-Starter-Boilerplate/)
 
 🚀 Eleventy Starter Boilerplate is production-ready with SEO-friendly for quickly starting a blog. ⚡️ Built with [Eleventy](https://www.11ty.dev), [ESLint](https://eslint.org), [Prettier](https://prettier.io), [Webpack](https://webpack.js.org), [PostCSS](https://postcss.org), [Tailwind CSS](https://tailwindcss.com) and [Netlify CMS](https://www.netlifycms.org) (optional).
 
@@ -98,7 +98,7 @@ Open http://localhost:8080 with your favorite browser to see your blog.
 
 You can easily configure Eleventy Starter Boilerplate. Please change the following file:
 
-- `public/assets/images/logo.png`: your blog logo
+- `public/assets/images/green-heart-technology-logo.png`: your blog logo
 - `public/apple-touch-icon.png`, `public/favicon.ico`, `public/favicon-16x16.png` and `public/favicon-32x32.png`: your blog favicon, you can generate from https://favicon.io/favicon-converter/
 - `src/_data/site.json`: your blog configuration
 - `src/_includes/layouts`: your blog HTML layout

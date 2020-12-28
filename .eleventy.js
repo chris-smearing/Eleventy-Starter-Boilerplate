@@ -17,6 +17,11 @@ module.exports = function (eleventyConfig) {
     },
   });
 
+  eleventyConfig.addPassthroughCopy('src/assets/js');
+  eleventyConfig.addPassthroughCopy({'node_modules/bootstrap/dist/js/*.js' : 'assets/js'});
+  eleventyConfig.addPassthroughCopy({'node_modules/@fortawesome/fontawesome-free/css/*.min.css' : 'assets/styles'});
+//   eleventyConfig.addPassthroughCopy({'node_modules/@fortawesome/fontawesome-free/webfonts/*.woff2' : 'assets/webfonts'});
+
   eleventyConfig.setEjsOptions({
     rmWhitespace: true,
     context: {

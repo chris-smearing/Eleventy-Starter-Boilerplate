@@ -1,99 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.png" />
+    <link href="/assets/styles/all.min.css" rel="stylesheet">
+
     <title><%= title %></title>
-    <meta
-      name="description"
-      content="<%= (!!locals.description) ? description : site.description %>"
-    />
+    <meta name="description" content="<%= (!!locals.description) ? description : site.description %>" />
     <meta name="author" content="<%= site.author %>" />
     <meta property="og:title" content="<%= title %>" />
-    <meta
-      property="og:description"
-      content="<%= (!!locals.description) ? description : site.description %>"
-    />
+    <meta property="og:description" content="<%= (!!locals.description) ? description : site.description %>" />
     <meta property="og:locale" content="<%= site.locale %>" />
     <meta property="og:site_name" content="<%= site.site_name %>" />
     <% if (locals.tags == "posts") { %>
     <meta property="og:type" content="article" />
     <meta property="article:published_time" content="<%= date.toISOString() %>" />
     <script type="application/ld+json">
-      {
-        "description": "<%= (!!locals.description) ? description : site.description %>",
-        "author": { "@type": "Person", "name": "<%= site.author %>" },
-        "@type": "BlogPosting",
-        "url": "<%= `${site.url}${page.url}` %>",
-        "publisher": {
-          "@type": "Organization",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "<%= `${site.url}/assets/images/logo.png` %>"
-          },
-          "name": "<%= site.author %>"
-        },
-        "headline": "<%= title %>",
-        "datePublished": "<%= date.toISOString() %>",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "<%= `${site.url}${page.url}` %>"
-        },
-        "@context": "http://schema.org"
-      }
+        {
+            "description": "<%= (!!locals.description) ? description : site.description %>",
+            "author": {
+                "@type": "Person",
+                "name": "<%= site.author %>"
+            },
+            "@type": "BlogPosting",
+            "url": "<%= `${site.url}${page.url}` %>",
+            "publisher": {
+                "@type": "Organization",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "<%= `${site.url}/assets/images/logo.png` %>"
+                },
+                "name": "<%= site.author %>"
+            },
+            "headline": "<%= title %>",
+            "datePublished": "<%= date.toISOString() %>",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "<%= `${site.url}${page.url}` %>"
+            },
+            "@context": "http://schema.org"
+        }
     </script>
     <% } %><%- include('webpack.ejs') %> <% if (page.url == "/") { %>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on('init', (user) => {
-          if (!user) {
-            window.netlifyIdentity.on('login', () => {
-              document.location.href = '/admin/';
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on('init', (user) => {
+                if (!user) {
+                    window.netlifyIdentity.on('login', () => {
+                        document.location.href = '/admin/';
+                    });
+                }
             });
-          }
-        });
-      }
+        }
     </script>
     <% } %>
-  </head>
+</head>
 
-  <body class="antialiased w-full text-gray-700">
-    <div class="max-w-screen-md mx-auto">
-      <div class="border-b border-gray-300">
-        <div class="pt-16 pb-8">
-          <h1 class="font-semibold text-3xl text-gray-800"><%= site.title %></h1>
-          <div class="text-xl"><%= site.description %></div>
-        </div>
-        <nav>
-          <ul class="flex flex-wrap text-xl">
-            <li class="mr-6">
-              <a class="text-gray-700 border-none hover:no-underline hover:text-gray-800" href="/"
-                >Home</a
-              >
-            </li>
-            <li class="mr-6">
-              <a
-                class="text-gray-700 border-none hover:no-underline hover:text-gray-800"
-                href="https://github.com/ixartz/Eleventy-Starter-Boilerplate"
-              >
-                GitHub
-              </a>
-            </li>
-          </ul>
+<body class="wrapper">
+    <header>
+        <nav class="navbar fixed-top navbar-light bg-light shadow" aria-label="First navbar example">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/"><img class="site-logo" src="/assets/images/<%= site.logoHorizontal %>" alt="GHT logo"></a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="navbar-collapse collapse" id="navbarsExample01" style="">
+                    <ul class="navbar-nav me-auto mb-2">
+                        <li class="nav-item active">
+                            <a class="nav-link" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/portfolio">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
-      </div>
+    </header>
+    <div class="site-wrapper">
 
-      <div class="text-xl py-5"><%- content %></div>
+        <main class="content-wrapper">
+            <%- content %>
+        </main>
 
-      <div class="border-t border-gray-300 text-center py-8">
-        Made with <span role="img" aria-label="Love">♥</span> by
-        <a href="https://creativedesignsguru.com">CreativeDesignsGuru</a>
-      </div>
+        <footer class="footer-wrapper">
+            <section id="contact-section" class="container-fluid">
+                <h2>Contact</h2>
+                <form name="contact" method="POST" data-netlify="true">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-floating mb-3"> 
+                                <input type="text" class="form-control" id="floatingName" placeholder="First & Last Name">
+                                <label for="floatingName">Name</label>
+                              </div>
+                        </div>
+                        <div class="col-sm">
+                              <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingEmail" placeholder="you@email.com">
+                                <label for="floatingEmail">Email</label>
+                              </div>                        
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="How can we help you?" id="floatingTextarea"></textarea>
+                                <label for="floatingTextarea">Comments</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-primary">SUBMIT</button>
+                        </div>
+                    </div>                
+                </form>
+            </section>
+
+            <section id="credit-section" class="container-fluid">
+                <p>&copy; <%= this.dateFns.getYear(new Date()) %> Green Heart Technology</p>
+                <p>Built with <span role="img" aria-label="Love">♥</span> and 11ty</p>
+    
+            </section>
+
+        </footer>
     </div>
-  </body>
+</body>
+
+<script defer src="/assets/js/base.js"></script>
+<script defer src="/assets/js/bootstrap.bundle.js"></script>
+
 </html>

@@ -6,11 +6,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 
-const entries = glob.sync(path.resolve(__dirname, 'src/assets/images/posts/*.{png,gif,jpg,jpeg}'));
+const entries = glob.sync(path.resolve(__dirname, 'src/assets/images/**/*.{png,gif,jpg,jpeg}'));
 entries.push(path.resolve(__dirname, 'src/assets/styles/main.css'));
 
 // TODO: Remove if the blog does not need syntax highlight
 entries.push(path.resolve(__dirname, 'src/assets/styles/prism-atom-dark.css'));
+
+entries.push(path.resolve(__dirname, 'src/assets/styles/styles.scss'));
+// entries.push(path.resolve(__dirname, 'node_modules/@fortawesome/fontawesome-free/webfonts/'));
 
 let cssFileName = 'styles/[name].css';
 
@@ -44,18 +47,24 @@ module.exports = {
   ],
   module: {
     rules: [
-      {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
-      },
-      {
+        {   test: /\.(woff2)$/,
+            loader: 'file-loader',
+            options: {
+                name: 'webfonts/[name].[ext]',
+            }
+        },
+        {
+            test: /\.(scss|css)$/,
+            exclude: /node_modules/,
+            use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader', 'postcss-loader'],
+        },
+        {
         test: /\.(gif|png|jpg|jpeg)$/i,
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: 'images/posts/[name].[ext]',
+              name: 'images/[folder]/[name].[ext]',
             },
           },
           {

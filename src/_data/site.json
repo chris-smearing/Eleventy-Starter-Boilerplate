@@ -1,8 +1,10 @@
 {
-  "site_name": "Starter",
-  "title": "Eleventy Starter Boilerplate",
+  "site_name": "Green Heart Technology",
+  "title": "Green Heart Technology",
   "description": "Starter code for your 11ty blog Boilerplate",
-  "url": "https://example.com",
+  "logoHorizontal": "green-heart-technology-logo-horizontal.png",
+  "logoVertical": "green-heart-technology-logo.png",
+  "url": "https://greenhearttechnology.com",
   "locale": "en",
-  "author": "Anonymous"
+  "author": "Chris Smearing"
 }
